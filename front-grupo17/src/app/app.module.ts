@@ -9,7 +9,7 @@ import { EnviarReporteComponent } from './enviar-reporte/enviar-reporte.componen
 import { ListarReportesComponent } from './listar-reportes/listar-reportes.component';
 import { VerReporteComponent } from './ver-reporte/ver-reporte.component';
 import { MainComponent } from './main/main.component';
-
+import { ModalModule } from 'ngb-modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +21,8 @@ import { MainComponent } from './main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

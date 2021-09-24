@@ -14,5 +14,6 @@ export class ListarReportesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+buscarc:string="";
+  buscar(){}
 }
