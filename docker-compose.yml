@@ -6,13 +6,11 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-     - './DataBase/mysql_data:/var/lib/mysql'
+     - ./DataBase/mysql_data:/var/lib/mysql
     environment:
      MYSQL_ROOT_PASSWORD: grupo17
     ports:
-     - "3036:3306"
-    expose:
-     - "3036"
+     - 3036:3306
   
   #server1:
     #image: server1
