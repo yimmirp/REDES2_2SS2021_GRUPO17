@@ -12,26 +12,26 @@ services:
     ports:
      - '3036:3306'
   
-  server1:
-    image: server1
-    build:
-      dockerfile: Dockerfile
-      context: ./Servidor1
-    ports:
-      - "3001:3001"
+  #server1:
+    #image: server1
+    #build:
+      #dockerfile: Dockerfile
+      #context: ./Servidor1
+    #ports:
+      #- "3001:3001"
 
-  server2:
-    image: server2
-    build:
-      dockerfile: Dockerfile
-      context: ./Servidor2
-    ports:
-      - "3002:3002"
+  #server2:
+    #image: server2
+    #build:
+      #dockerfile: Dockerfile
+      #context: ./Servidor2
+    #ports:
+      #- "3002:3002"
 
-  server3:
-    image: server3
-    build:
-      dockerfile: Dockerfile
-      context: ./Servidor3
-    ports:
-      - "3003:3003"
+  #server3:
+    #image: server3
+    #build:
+      #dockerfile: Dockerfile
+      #context: ./Servidor3
+    #ports:
+      #- "3003:3003"
