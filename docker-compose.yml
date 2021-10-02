@@ -3,9 +3,6 @@ version: '3.9'
 services:
   mysql:
     image: mysql
-    build:
-      dockerfile: Dockerfile
-      context: ./DataBase
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
@@ -14,6 +11,8 @@ services:
      MYSQL_ROOT_PASSWORD: grupo17
     ports:
      - "3036:3306"
+    expose:
+     - "3036"
   
   #server1:
     #image: server1
