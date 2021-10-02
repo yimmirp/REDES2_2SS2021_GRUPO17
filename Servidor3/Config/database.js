@@ -1,6 +1,6 @@
 module.exports = {
     hrPool: {
-        host: "127.0.0.1",
+        host: "3.131.83.253",
         port: "3036",
         user: "root",
         password: "grupo17",

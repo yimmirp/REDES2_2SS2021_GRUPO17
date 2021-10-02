@@ -22,7 +22,8 @@ function insertar(req, res) {
                     if (error) {
                         res.status(500).json({
                             Mensaje: "Error en la consulta, verifique los campos de entrada",
-                            Error: error
+                            Error: error,
+                            Servidor: firma.servidor.uno
                         });
                     } else {
                         res.status(200).json({
