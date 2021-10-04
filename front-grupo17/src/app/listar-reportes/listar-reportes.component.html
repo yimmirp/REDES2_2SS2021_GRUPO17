@@ -19,7 +19,7 @@
                             <th>Carnet</th>
                             <th>Nombre</th>
                             <th>Proyecto</th>
-                            <th>Fecha</th>
+                           
                             <th>Servidor</th>
                             <th class="dt-no-sorting">Action</th>
                         </tr>
@@ -29,6 +29,8 @@
                             <td>{{dato.carnet}}</td>
                             <td>{{dato.nombre}}</td>
                             <td>{{dato.curso}}</td>
+        
+                            <td>{{dato.servidor}}</td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-success mb-2 mr-2" data-toggle="modal" data-target="#fadeupModal">Ver Reporte</button>
@@ -49,25 +51,25 @@
                                                             <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Carnet</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" name="carnet"/>
+                                                                <input type="text" class="form-control" name="carnet" placeholder="{{dato.carnet}}"/>
                                                             </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">Nombre</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="nombre" />
+                                                                    <input type="text" class="form-control" name="nombre" placeholder="{{dato.nombre}}"/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">Curso/ Proyecto</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="cursoproyecto" />
+                                                                    <input type="text" class="form-control" name="cursoproyecto"placeholder="{{dato.curso}}" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-sm-2 col-form-label">Procesado Por:</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control " name="procesadopor" />
+                                                                    <input type="text" class="form-control " name="procesadopor" placeholder="{{dato.servidor}} "/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -80,14 +82,14 @@
                                                                
                                                             <div class="form-group row">
                                                                 <div class="col-sm-10">
-                                                                    <textarea type="text" class="form-control"  name="precio" >hola</textarea>
+                                                                    <textarea type="text" class="form-control"  name="precio" >{{dato.descripcion}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                       </form>
                                                 </div>
                                                 <div class="modal-footer md-button">
-                                                    <p> Solicitud atendida por el servidor : </p>
+                                                    <p> {{dato.servidor}}</p>
                                                     <button class="btn btn-primary" data-dismiss="modal"><i class="flaticon-cancel-12"></i>Salir</button>
                                                 </div>
                                             </div>

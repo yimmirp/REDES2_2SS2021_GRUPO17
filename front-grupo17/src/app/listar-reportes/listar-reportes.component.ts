@@ -23,16 +23,29 @@ Reporte:any = [];
 
 
   buscar(){
+    this.Reporte=[];
     console.log(this.buscarc)
-    this.service.Buscar(this.buscarc)
+    if(this.buscarc==""){
+this.vertodo();
+    }else{
+      this.service.Buscar(this.buscarc)
 
-    .subscribe(
-      res => {
-       this.Reporte=res.data;
-      },
-      err => console.log(err)
-    )
-
+      .subscribe(
+        res => {
+          const gen=res.data;
+         console.log(res.data)
+         for(var i=0; i<gen.length ; i++){
+          console.log(gen[i]);
+          
+          this.Reporte.push({nombre:gen[i].nombre,carnet:gen[i].carnet,curso:gen[i].curso,servidor:res.Servidor,descripcion:gen[i].descripcion});
+        }
+        console.log(this.Reporte)
+        },
+        err => console.log(err)
+      )
+  
+    }
+   
   }
 
 
@@ -41,11 +54,11 @@ Reporte:any = [];
     .subscribe(
       res => {
         const gen=res.data;
-            console.log(gen);
+            console.log(res);
         for(var i=0; i<gen.length ; i++){
           console.log(gen[i]);
           
-          this.Reporte.push({nombre:gen[i].nombre,carnet:gen[i].carnet,curso:gen[i].curso,servidor:res.servidor});
+          this.Reporte.push({nombre:gen[i].nombre,carnet:gen[i].carnet,curso:gen[i].curso,servidor:res.Servidor,descripcion:gen[i].descripcion});
         }
         console.log(this.Reporte)
       },
