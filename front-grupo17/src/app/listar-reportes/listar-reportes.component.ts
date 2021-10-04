@@ -18,7 +18,7 @@ export class ListarReportesComponent implements OnInit {
     this.vertodo();
   }
 buscarc:string="";
-Reporte = [];
+Reporte:any = [];
 
 
 
@@ -28,7 +28,7 @@ Reporte = [];
 
     .subscribe(
       res => {
-       this.Reporte=res;
+       this.Reporte=res.data;
       },
       err => console.log(err)
     )
@@ -38,10 +38,16 @@ Reporte = [];
 
   vertodo(){
     this.service.getReporte()
-
     .subscribe(
       res => {
-       this.Reporte=res;
+        const gen=res.data;
+            console.log(gen);
+        for(var i=0; i<gen.length ; i++){
+          console.log(gen[i]);
+          
+          this.Reporte.push({nombre:gen[i].nombre,carnet:gen[i].carnet,curso:gen[i].curso,servidor:res.servidor});
+        }
+        console.log(this.Reporte)
       },
       err => console.log(err)
     )

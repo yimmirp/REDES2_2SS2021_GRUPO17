@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class ServicioService {
 
   constructor(    private http: HttpClient) { }
-  api1 = 'http://localhost:3001/s1'
+  api1 = 'http://3.131.83.253:3001/s1'
 
   getReporte()
   {

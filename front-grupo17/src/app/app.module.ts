@@ -10,6 +10,7 @@ import { ListarReportesComponent } from './listar-reportes/listar-reportes.compo
 import { VerReporteComponent } from './ver-reporte/ver-reporte.component';
 import { MainComponent } from './main/main.component';
 import { ModalModule } from 'ngb-modal';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ModalModule } from 'ngb-modal';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule,  
+    HttpClientModule,
     ModalModule
   ],
   providers: [],
