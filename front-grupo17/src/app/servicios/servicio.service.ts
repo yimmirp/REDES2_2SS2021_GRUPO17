@@ -17,4 +17,9 @@ export class ServicioService {
   Buscar(carnet:any){
     return this.http.post<any>(`${this.api1}/reporte/obtener`,carnet);
   }
+  
+  insertar(reporte:any)
+  {
+    return this.http.post<any>(`${this.api1}/reporte/insertar`,reporte)
+  }
 }
