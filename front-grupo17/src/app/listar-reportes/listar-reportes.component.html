@@ -1,0 +1,163 @@
+<div class="layout-px-spacing">
+    <div class="row layout-top-spacing" id="cancel-row">
+        <div id="searchLive" class="col-lg-12 layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="row">
+                    <div class="col row">
+                        <form class="form-inline my-20 my-lg-20">
+                            <input type="text" class="w-100 mx-2 form-control product-search " id="input-search"
+                                [(ngModel)]="buscarc" name="buscarc" placeholder="Buscar Carnet...">
+                        </form>
+                        <button class="btn btn-primary" type="submit" (click)="buscar()"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-search">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="col-3">
+
+                        <label>Solicitud Atendida por: {{ServerResponse}}</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="widget-content widget-content-area br-6">
+                <table id="html5-extension" class="table table-hover non-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Carnet</th>
+                            <th>Nombre</th>
+                            <th>Proyecto</th>
+                            <th>Fecha</th>
+                            <th>Servidor</th>
+                            <th class="dt-no-sorting">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dato of Reporte">
+                            <td>{{dato.carnet}}</td>
+                            <td>{{dato.nombre}}</td>
+                            <td>{{dato.curso}}</td>
+                            <td>{{dato.fecha.substr(0,10)}}</td>
+                            <td>{{dato.signature}}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success mb-2 mr-2" data-toggle="modal"
+                                        data-target="#fadeupModal">Ver Reporte</button>
+                                    <div id="fadeupModal" class="modal animated fadeInUp custo-fadeInUp" role="dialog">
+                                        <div class="modal-dialog">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Reporte Individual: </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round"
+                                                            class="feather feather-x">
+                                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Carnet</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control"
+                                                                        name="carnet" placeholder="{{dato.carnet}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Nombre</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control"
+                                                                        name="nombre" placeholder="{{dato.nombre}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Curso/
+                                                                    Proyecto</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control"
+                                                                        name="cursoproyecto"
+                                                                        placeholder="{{dato.curso}}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Procesado Por:
+                                                                </label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control "
+                                                                        name="procesadopor"
+                                                                        placeholder="{{dato.signature}} " />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Fecha</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" name="fecha"
+                                                                        placeholder="{{dato.fecha.substr(0,10)}}" />
+                                                                </div>
+                                                            </div>
+                                                            <label class="col-sm-6 col-form-label"> Cuerpo del
+                                                                reporte</label>
+
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-10">
+                                                                    <textarea type="text" class="form-control"
+                                                                        name="precio">{{dato.descripcion}}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer md-button">
+                                                    <p class="mr-1">Peticion atendida por: {{dato.servidor}}</p>
+                                                    <button class="btn btn-primary" data-dismiss="modal"><i
+                                                            class="flaticon-cancel-12"></i>Salir</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<script src="assets/js/libs/jquery-3.1.1.min.js"></script>
+<script src="bootstrap/js/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+        App.init();
+    });
+</script>
+<script src="plugins/highlight/highlight.pack.js"></script>
+<script src="assets/js/custom.js"></script>
+<!-- END GLOBAL MANDATORY STYLES -->
+
+<!--  BEGIN CUSTOM SCRIPT FILE  -->
+<script src="assets/js/scrollspyNav.js"></script>

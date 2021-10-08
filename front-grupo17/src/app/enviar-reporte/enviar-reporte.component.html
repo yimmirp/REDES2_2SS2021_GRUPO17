@@ -1,0 +1,36 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+    <div class="widget widget-content-area br-4">
+        <div class="widget-one">
+
+            <form>
+                <div class="form-group mb-4">
+                    <label for="noCarne">No. de Carné</label>
+                    <input type="text" class="form-control" id="noCarne"
+                        placeholder="Carné del practicante que envía el reporte*" style="width: 100vh;"
+                        [(ngModel)]="carne_estudiante" name="noCarne">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="nombreEstudiante">Nombre Estudiante</label>
+                    <input type="text" class="form-control" id="nombreEstudiante"
+                        placeholder="Nombre completo del practicante*"
+                        [(ngModel)]="nombre_estudiante" name="nombreEstudiante">
+                </div>
+                <div class="form-group">
+                    <label for="cursoAsignado">Curso/Proyecto Asignado</label>
+                    <input type="text" class="form-control" id="cursoAsignado"
+                        placeholder="Curso o proyecto del practicante *"
+                        [(ngModel)]="curso_estudiante" name="cursoAsignado">
+                </div>
+                <div class="form-group">
+                    <label for="cuerpoReporte">Cuerpo del Reporte o Mensaje</label>
+                    <textarea class="form-control" id="cuerpoReporte" rows="4"
+                    [(ngModel)]="reporte_estudiante" name="cuerpoReporte"></textarea>
+                </div>
+                <small id="emailHelp2" class="form-text text-muted">*Required Fields</small>
+
+                <button type="submit" class="btn btn-primary mt-3" (click)="enviar_reporte()">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+</div>
