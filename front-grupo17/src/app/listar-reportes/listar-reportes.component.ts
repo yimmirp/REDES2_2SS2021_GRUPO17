@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainComponent } from '../main/main.component'
 import { ServicioService } from 'src/app/servicios/servicio.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-listar-reportes',
@@ -15,11 +16,19 @@ export class ListarReportesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("--URI PRODUCTION: "+ environment.api);
+    //console.log(environment.envVar);
+
+   // console.log(JSON.stringify(process.env.Signature))
+    //console.log(JSON.stringify(process.env.loadbalancer))
+
     this.vertodo();
+    //console.log(environment.api)
+
   }
 buscarc:string="";
 Reporte:any = [];
-
+ServerResponse:string=""
 
 
   buscar(){
@@ -58,7 +67,18 @@ this.vertodo();
         for(var i=0; i<gen.length ; i++){
           console.log(gen[i]);
           
-          this.Reporte.push({nombre:gen[i].nombre,carnet:gen[i].carnet,curso:gen[i].curso,servidor:res.Servidor,descripcion:gen[i].descripcion});
+          this.Reporte.push({
+            nombre:gen[i].nombre,
+            carnet:gen[i].carnet,
+            curso:gen[i].curso,
+            servidor:res.Servidor,
+            descripcion:gen[i].descripcion,
+            fecha:gen[i].date,
+            signature:gen[i].signature
+  
+          });
+
+          this.ServerResponse=res.Servidor;
         }
         console.log(this.Reporte)
       },

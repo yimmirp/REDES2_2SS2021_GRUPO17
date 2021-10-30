@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class ServicioService {
 
   constructor(    private http: HttpClient) { }
-  api1 = 'http://3.131.83.253:3001/s1'
+  api1 = environment.api;
+
 
   getReporte()
   {

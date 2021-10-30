@@ -1,15 +1,13 @@
-version: '3.1'
+version: '3.5'
 
 services:
-  bd:
+  db:
     image: mysql
-    container_name: bd
+    container_name: db
     command: --default-authentication-plugin=mysql_native_password
-    expose: 
-      - "3306"
     restart: always
     volumes:
-      - ./DataBase/mysql_data:/var/lib/mysql
+      - ~/mysqldata:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: grupo17
     networks:
@@ -19,23 +17,35 @@ services:
   server1:
     image: server1
     container_name: server1
+    #restart: always
+    environment:
+      - Signature=201503470
+      - PORT=80
     build:
       dockerfile: Dockerfile
-      context: ./Servidor1
+      context: ./Backend
     depends_on:
-      - bd
+      - db
+    links:
+      - "db:database"
     networks:
-        - db_network
-        - service_network
+      - db_network
+      - service_network
+    
 
   server2:
     image: server2
     container_name: server2
+    environment:
+      - Signature=201246079
+      - PORT=80
     build:
       dockerfile: Dockerfile
-      context: ./Servidor2
+      context: ./Backend
     depends_on:
-      - bd
+      - db
+    links:
+      - "db:database"
     networks:
       - db_network
       - service_network
@@ -44,11 +54,16 @@ services:
   server3:
     image: server3
     container_name: server3
+    environment:
+      - Signature=201709164
+      - PORT=80
     build:
       dockerfile: Dockerfile
-      context: ./Servidor3
+      context: ./Backend
     depends_on:
-      - bd
+      - db
+    links:
+      - "db:database"
     networks:
       - db_network
       - service_network
@@ -65,22 +80,42 @@ services:
     networks:
         - service_network
         - frontend_network
+  
+  frontend:
+    image: frontend
+    container_name: frontend
+    environment:
+      - Signature=201709164
+    build:
+      dockerfile: Dockerfile
+      context: ./front-grupo17
+    #volumes:
+    #  - ./front-grupo17/dist/front-grupo17:/usr/share/nginx/html
+    depends_on:
+      - loadbalancer
+    links:
+      - "loadbalancer"
+    networks:
+      - frontend_network
             
 networks:
   db_network:
     driver: bridge
+    name: db_network
     ipam:
       config:
         - subnet: 10.10.17.0/24
   
   service_network:
     driver: bridge
+    name: service_network
     ipam:
       config:
         - subnet: 172.35.77.0/24
   
   frontend_network:
     driver: bridge
+    name: frontend_network
     ipam:
       config:
         - subnet: 192.168.57.0/24
